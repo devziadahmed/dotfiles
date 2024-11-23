@@ -5,6 +5,8 @@ vim.g.mapleader = " "
 
 vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
 
+vim.keymap.set("t", "<C-n>", "<C-\\><C-n>", { noremap = true, silent = true })
+
 -- opts
 
 local opts = { noremap = true, silent = false }
@@ -38,7 +40,7 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 -- Buffers
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
-vim.keymap.set("n", "<leader>x", ":Bdelete!<CR>", opts)   -- close buffer
+vim.keymap.set("n", "<leader>x", ":Bdelete!<CR>", opts) -- close buffer
 vim.keymap.set("n", "<leader>b", "<cmd> enew <CR>", opts) -- new buffer
 
 -- Navigate between splits
@@ -48,10 +50,10 @@ vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", opts)
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", opts)
 
 -- Tabs
-vim.keymap.set("n", "<leader>to", ":tabnew<CR>", opts)   -- open new tab
+vim.keymap.set("n", "<leader>to", ":tabnew<CR>", opts) -- open new tab
 vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", opts) -- close current tab
-vim.keymap.set("n", "<leader>tn", ":tabn<CR>", opts)     --  go to next tab
-vim.keymap.set("n", "<leader>tp", ":tabp<CR>", opts)     --  go to previous tab
+vim.keymap.set("n", "<leader>tn", ":tabn<CR>", opts) --  go to next tab
+vim.keymap.set("n", "<leader>tp", ":tabp<CR>", opts) --  go to previous tab
 
 -- Toggle line wrapping
 vim.keymap.set("n", "<leader>lw", "<cmd>set wrap!<CR>", opts)
@@ -68,13 +70,13 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 -- Close All windows in the current buffer with ':wq'
 vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "*",
-  callback = function()
-    if vim.bo.modified then
-      vim.cmd("w")
-      vim.cmd("qa!")
-    end
-  end,
+	pattern = "*",
+	callback = function()
+		if vim.bo.modified then
+			vim.cmd("w")
+			vim.cmd("qa!")
+		end
+	end,
 })
 
 -- Example: map `<leader>q` to close the current buffer
