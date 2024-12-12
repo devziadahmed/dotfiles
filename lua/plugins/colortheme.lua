@@ -3,8 +3,8 @@
 -- 	lazy = false,
 -- 	priority = 1000,
 -- 	config = function()
--- 		vim.g.gruvbox_material_background = "medium"
--- 		vim.g.gruvbox_material_foreground = "original"
+-- 		vim.g.gruvbox_material_background = "soft"
+-- 		vim.g.gruvbox_material_foreground = "mix"
 -- 		vim.cmd.colorscheme("gruvbox-material")
 -- 		vim.cmd([[
 --   highlight DiagnosticError guifg=#ff6c6b guibg=#3c2c2c
@@ -16,26 +16,10 @@
 -- }
 
 -- return {
--- 	"marko-cerovac/material.nvim",
+-- 	"morhetz/gruvbox",
 -- 	config = function()
--- 		vim.cmd.colorscheme("material")
--- 		--Lua:
--- 		vim.g.material_style = "darker"
--- 	end,
--- }
-
--- return {
--- 	"slugbyte/lackluster.nvim",
--- 	lazy = false,
--- 	priority = 1000,
--- 	init = function()
--- 		local lackluster = require("lackluster")
---
--- 		-- !must set colorscheme after calling setup()!
--- 		-- vim.cmd.colorscheme("lackluster")
--- 		-- vim.cmd.colorscheme("lackluster")
--- 		vim.cmd.colorscheme("lackluster-hack") -- my favorite
--- 		-- vim.cmd.colorscheme("lackluster-mint")
+-- 		vim.cmd.colorscheme("gruvbox")
+-- 		vim.g.gruvbox_contrast_dark = "dark"
 -- 	end,
 -- }
 
@@ -50,67 +34,74 @@
 -- 	-- you can set set configuration options here
 -- 	init = function()
 -- 		vim.g.zenbones_darken_comments = 45
--- 		vim.api.nvim_set_hl(0, "String", { fg = "#00ff00" })
+-- 		vim.api.nvim_set_hl(0, "String", { fg = "#7E9E84" })
 -- 		vim.cmd.colorscheme("zenwritten")
 -- 	end,
 -- }
 
-return {
-	"mcchrish/zenbones.nvim",
-	dependencies = "rktjmp/lush.nvim",
-	config = function()
-		vim.cmd.colorscheme("zenwritten")
-		vim.cmd([[
-      augroup MyColorSchemeTweaks
-        autocmd!
-        autocmd ColorScheme zenbones lua MyZenbonesTweaks()
-      augroup END
-    ]])
+-- return {
+-- 	"blazkowolf/gruber-darker.nvim",
+-- 	bold = true,
+-- 	config = function()
+-- 		vim.cmd.colorscheme("gruber-darker")
+-- 	end,
+-- }
 
-		function MyZenbonesTweaks()
-			if vim.o.background == "light" then
-				vim.api.nvim_set_hl(0, "Constant", { fg = "#556570" })
-			else
-				-- Core Text
-				vim.api.nvim_set_hl(0, "Normal", { fg = "#D4D4D4", bg = "#191919" }) -- Default text and background
-				vim.api.nvim_set_hl(0, "Comment", { fg = "#5A5A5A", italic = true }) -- Muted gray for comments
-				vim.api.nvim_set_hl(0, "String", { fg = "#587D46" }) -- Soft green for strings
-				-- vim.api.nvim_set_hl(0, "Constant", { fg = "#8C8C8C" }) -- Muted tone for constants
-				vim.api.nvim_set_hl(0, "Number", { fg = "#9f9fa3" }) -- Neutral gray for numbers
-				vim.api.nvim_set_hl(0, "Boolean", { fg = "#FF8866" }) -- Warm tone for booleans
-				vim.api.nvim_set_hl(0, "Keyword", { fg = "#8C6C9F", bold = true }) -- Muted blue for keywords
-				vim.api.nvim_set_hl(0, "Function", { fg = "#C4A484" }) -- Warm gold for functions
-				vim.api.nvim_set_hl(0, "Variable", { fg = "#C8B29A" }) -- Warm beige for variables
-				vim.api.nvim_set_hl(0, "Operator", { fg = "#A6A6A6" }) -- Light gray for operators
-				vim.api.nvim_set_hl(0, "Type", { fg = "#9A7B4F", bold = true }) -- Soft brown for types and classes
-				vim.api.nvim_set_hl(0, "Struct", { fg = "#9A7B4F", bold = true }) -- Same as type for structs
-				vim.api.nvim_set_hl(0, "Property", { fg = "#A48C7D" }) -- Subtle contrast for properties
-				-- vim.api.nvim_set_hl(0, "Include", { fg = "", italic = true }) -- Soft purple for includes/imports
-				vim.api.nvim_set_hl(0, "Delimiter", { fg = "#888888" }) -- Neutral for punctuation and delimiters
-
-				-- -- Advanced Syntax
-				vim.api.nvim_set_hl(0, "Identifier", { fg = "#C2B6A3" }) -- Light beige for identifiers
-				vim.api.nvim_set_hl(0, "Statement", { fg = "#8C6C9F", bold = true }) -- Muted blue for statements
-				vim.api.nvim_set_hl(0, "PreProc", { fg = "#9485A3", italic = true }) -- Soft purple for preprocessing
-				vim.api.nvim_set_hl(0, "Label", { fg = "#87AFCB", italic = true }) -- Muted cyan for labels
-				vim.api.nvim_set_hl(0, "Special", { fg = "#D8AA78" }) -- Light gold for special tokens
-				vim.api.nvim_set_hl(0, "Todo", { fg = "#FFAA33", bg = "#332200", bold = true }) -- Highlighted for TODOs
-				vim.api.nvim_set_hl(0, "Macro", { fg = "#AA88AA" }) -- Muted lavender for macros                 -- Light gray for operators
-				vim.api.nvim_set_hl(0, "LineNr", { fg = "#3D3D3D" }) -- Dimmer gray for line numbers
-				vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#D4D4D4", bold = true }) -- Highlighted line number
-				vim.api.nvim_set_hl(0, "Visual", { bg = "#333333" }) -- Subtle background for visual mode
-				vim.api.nvim_set_hl(0, "Pmenu", { bg = "#232323", fg = "#D4D4D4" }) -- Popup menu
-				vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#2C2C2C", fg = "#FFFFFF" }) -- Selected item in popup menu
-				vim.api.nvim_set_hl(0, "Search", { bg = "#2E4E34", fg = "#FFFFFF" }) -- Subtle green for search matches
-				vim.api.nvim_set_hl(0, "Error", { fg = "#FF5555", bg = "#330000", bold = true }) -- Muted red for errors
-				vim.api.nvim_set_hl(0, "Warning", { fg = "#FFC555", bg = "#332600" }) -- Subtle yellow for warnings
-			end
-		end
-
-		-- Trigger the tweaks immediately in case the colorscheme is already set
-		MyZenbonesTweaks()
-	end,
-}
+-- return {
+-- 	"mcchrish/zenbones.nvim",
+-- 	dependencies = "rktjmp/lush.nvim",
+-- 	config = function()
+-- 		vim.cmd.colorscheme("zenwritten")
+-- 		vim.cmd([[
+-- 			augroup MyColorSchemeTweaks
+-- 				autocmd!
+-- 				autocmd ColorScheme zenbones lua MyZenbonesTweaks()
+-- 			augroup END
+-- 		]])
+--
+-- 		function MyZenbonesTweaks()
+-- 			if vim.o.background == "light" then
+-- 				vim.api.nvim_set_hl(0, "Constant", { fg = "#556570" }) -- Cool gray-blue
+-- 			else
+-- 				-- Core Text
+-- 				vim.api.nvim_set_hl(0, "Normal", { fg = "#C8D0D4", bg = "#1C1F26" }) -- Neutral gray text on a dark slate background
+-- 				vim.api.nvim_set_hl(0, "Comment", { fg = "#5C6773", italic = true }) -- Muted steel gray for comments
+-- 				vim.api.nvim_set_hl(0, "String", { fg = "#7E9E84" }) -- Cool green for strings
+-- 				vim.api.nvim_set_hl(0, "Constant", { fg = "#9BA7B0" }) -- Muted blue-gray for constants
+-- 				vim.api.nvim_set_hl(0, "Number", { fg = "#A3B4C1" }) -- Soft blue for numbers
+-- 				vim.api.nvim_set_hl(0, "Boolean", { fg = "#D0847C" }) -- Muted red for booleans
+-- 				vim.api.nvim_set_hl(0, "Keyword", { fg = "#7A9FB3", bold = true }) -- Cool blue for keywords
+-- 				vim.api.nvim_set_hl(0, "Function", { fg = "#A7C1C6" }) -- Soft teal for functions
+-- 				vim.api.nvim_set_hl(0, "Variable", { fg = "#B4C1C4" }) -- Muted neutral gray for variables
+-- 				vim.api.nvim_set_hl(0, "Operator", { fg = "#8B98A4" }) -- Subtle blue-gray for operators
+-- 				vim.api.nvim_set_hl(0, "Type", { fg = "#9EA8B4", bold = true }) -- Muted blue for types and classes
+-- 				vim.api.nvim_set_hl(0, "Struct", { fg = "#9EA8B4", bold = true }) -- Same tone for structs
+-- 				vim.api.nvim_set_hl(0, "Property", { fg = "#A3B0B5" }) -- Subtle cool gray for properties
+-- 				vim.api.nvim_set_hl(0, "Delimiter", { fg = "#657080" }) -- Neutral steel gray for punctuation and delimiters
+--
+-- 				-- Advanced Syntax
+-- 				vim.api.nvim_set_hl(0, "Identifier", { fg = "#C4CCD1" }) -- Light gray for identifiers
+-- 				vim.api.nvim_set_hl(0, "Statement", { fg = "#7A9FB3", bold = true }) -- Cool blue for statements
+-- 				vim.api.nvim_set_hl(0, "PreProc", { fg = "#8BA3B0", italic = true }) -- Muted steel blue for preprocessing
+-- 				vim.api.nvim_set_hl(0, "Label", { fg = "#87AFCB", italic = true }) -- Soft cyan for labels
+-- 				vim.api.nvim_set_hl(0, "Special", { fg = "#A7C6D8" }) -- Light blue for special tokens
+-- 				vim.api.nvim_set_hl(0, "Todo", { fg = "#E8AC50", bg = "#2A2E33", bold = true }) -- Subtle amber for TODOs
+-- 				vim.api.nvim_set_hl(0, "Macro", { fg = "#88AABB" }) -- Soft teal for macros
+-- 				vim.api.nvim_set_hl(0, "LineNr", { fg = "#37414F" }) -- Dim gray-blue for line numbers
+-- 				vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#C8D0D4", bold = true }) -- Highlighted number
+-- 				vim.api.nvim_set_hl(0, "Visual", { bg = "#333B44" }) -- Subtle slate gray for visual mode
+-- 				vim.api.nvim_set_hl(0, "Pmenu", { bg = "#242A32", fg = "#C8D0D4" }) -- Popup menu
+-- 				vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#3C444C", fg = "#FFFFFF" }) -- Highlighted item in popup menu
+-- 				vim.api.nvim_set_hl(0, "Search", { bg = "#2E4A5C", fg = "#FFFFFF" }) -- Muted cyan for search matches
+-- 				vim.api.nvim_set_hl(0, "Error", { fg = "#FF5555", bg = "#330000", bold = true }) -- Muted red for errors
+-- 				vim.api.nvim_set_hl(0, "Warning", { fg = "#E8B56D", bg = "#332600" }) -- Subtle amber for warnings
+-- 			end
+-- 		end
+--
+-- 		-- Trigger the tweaks immediately in case the colorscheme is already set
+-- 		MyZenbonesTweaks()
+-- 	end,
+-- }
 
 -- return {
 -- 	"alligator/accent.vim",
@@ -153,9 +144,76 @@ return {
 -- 	priority = 1000,
 -- 	config = function()
 -- 		require("catppuccin").setup({
--- 			flavour = "mocha",
+-- 			flavour = "latte",
 -- 		})
 -- 		vim.cmd.colorscheme("catppuccin")
+-- 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "#ff6c6b", undercurl = true })
+-- 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "#ECBE7B", undercurl = true })
+-- 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "#b1d4e5", undercurl = true })
+-- 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "#98be65", undercurl = true })
+-- 	end,
+-- }
+
+return {
+	"catppuccin/nvim",
+	name = "catppuccin",
+	priority = 1000,
+	config = function()
+		-- Function to determine the flavor based on time
+		local function get_catppuccin_flavour()
+			local hour = tonumber(os.date("%H")) -- Get the current hour (24-hour format)
+			if hour >= 6 and hour < 18 then
+				return "latte" -- Daytime: Light flavor
+			else
+				return "macchiato" -- Nighttime: Dark flavor
+			end
+		end
+
+		-- Set up Catppuccin with the dynamically chosen flavor
+		require("catppuccin").setup({
+			flavour = get_catppuccin_flavour(),
+		})
+
+		-- Apply the colorscheme
+		vim.cmd.colorscheme("catppuccin")
+
+		-- Customize diagnostic highlights
+		vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "#ff6c6b", undercurl = true })
+		vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "#ECBE7B", undercurl = true })
+		vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "#b1d4e5", undercurl = true })
+		vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "#98be65", undercurl = true })
+
+		-- 				-- Override NeoTree colors for light theme
+		vim.defer_fn(function()
+			if require("catppuccin").options.flavour == "latte" then
+				-- vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "#1e66f5", bg = "none" }) -- Directories
+				-- vim.api.nvim_set_hl(0, "NeoTreeFileName", { fg = "#4c566a", bg = "none" }) -- Files
+				-- vim.api.nvim_set_hl(0, "NeoTreeFileNameOpened", { fg = "#a3be8c", bg = "none", bold = true }) -- Opened files
+				-- vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { fg = "#c0c0c0", bg = "none" }) -- Indent markers
+				-- vim.api.nvim_set_hl(0, "NeoTreeRootName", { fg = "#d08770", bg = "none", bold = true }) -- Root folder
+				vim.api.nvim_set_hl(0, "NeoTreeCursorLine", { bg = "#e0e0e0", fg = "#d08770" }) -- Hover line color
+			end
+		end, 100)
+
+		-- 		-- Optional: Keymap to toggle flavors manually
+		vim.api.nvim_set_keymap(
+			"n",
+			"<leader>cf",
+			":lua require('catppuccin').setup({ flavour = (function() local hour = tonumber(os.date('%H')); return (hour >= 6 and hour < 18) and 'latte' or 'macchiato' end)() }); vim.cmd.colorscheme('catppuccin')<CR>",
+			{ noremap = true, silent = true }
+		)
+	end,
+}
+
+-- return {
+-- 	"cdmill/neomodern.nvim",
+-- 	lazy = false,
+-- 	priority = 1000,
+-- 	config = function()
+-- 		require("neomodern").setup({
+-- 			-- optional configuration here
+-- 		})
+-- 		require("neomodern").load()
 -- 	end,
 -- }
 
@@ -168,7 +226,7 @@ return {
 -- 			flavour = "macchiato",
 -- 			no_italic = false,
 -- 			no_bold = true,
--- 			styles = {   -- Handles the styles of general hi groups (see `:h highlight-args`):
+-- 			styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
 -- 				comments = {}, -- Change the style of comments
 -- 				conditionals = {},
 -- 				loops = {},
@@ -185,25 +243,6 @@ return {
 -- 			},
 -- 		})
 -- 		vim.cmd.colorscheme("catppuccin")
--- 	end,
--- }
-
--- return {
--- 	"HoNamDuong/hybrid.nvim",
--- 	lazy = false,
--- 	priority = 1000,
--- 	opts = {},
--- 	config = function()
--- 		vim.cmd.colorscheme("hybrid")
--- 	end,
--- }
-
--- return {
--- 	"xero/miasma.nvim",
--- 	lazy = false,
--- 	priority = 1000,
--- 	config = function()
--- 		vim.cmd("colorscheme miasma")
 -- 	end,
 -- }
 
@@ -292,13 +331,6 @@ return {
 -- }
 
 -- return {
--- 	"shaunsingh/moonlight.nvim",
--- 	config = function()
--- 		vim.cmd.colorscheme("moonlight")
--- 	end,
--- }
-
--- return {
 -- 	"olimorris/onedarkpro.nvim",
 -- 	lazy = false,
 -- 	priority = 1000,
@@ -315,13 +347,6 @@ return {
 --   highlight DiagnosticHint guifg=#98be65 guibg=#2c3c2c
 -- ]])
 -- 		vim.cmd("colorscheme onedark")
--- 	end,
--- }
-
--- return {
--- 	"fenetikm/falcon",
--- 	config = function()
--- 		vim.cmd.colorscheme("falcon")
 -- 	end,
 -- }
 
@@ -362,49 +387,6 @@ return {
 
 -- return {
 -- 	{
--- 		"mcchrish/zenbones.nvim",
--- 		dependencies = { "rktjmp/lush.nvim" },
--- 		init = function()
--- 			vim.g.neobones_darkness = "stark"
--- 			vim.g.neobones_lighten_cursor_line = 8
--- 			vim.g.neobones_lighten_comments = 40
--- 			vim.g.neobones_italic_comments = false
--- 			vim.api.nvim_create_autocmd({ "ColorScheme" }, {
--- 				pattern = "neobones",
--- 				callback = function()
--- 					local lush = require("lush")
--- 					local base = require("neobones")
--- 					local testNum = 12344567890
--- 					local specs = lush.parse(function()
--- 						return {
--- 							Constant = { base.Constant, gui = "NONE" },
--- 							Number = { base.Number, gui = "italic" },
--- 						}
--- 					end)
--- 					lush.apply(lush.compile(specs))
--- 				end,
--- 			})
--- 			vim.cmd("colorscheme neobones")
--- 		end,
--- 	},
--- 	{
--- 		"LazyVim/LazyVim",
--- 		opts = {
--- 			colorscheme = "neobones",
--- 		},
--- 	},
--- }
-
--- return {
---
--- 	"tjdevries/colorbuddy.nvim",
--- 	config = function()
--- 		vim.cmd.colorscheme("colorbuddy")
--- 	end,
--- }
-
--- return {
--- 	{
 -- 		"Everblush/nvim",
 -- 		name = "everblush",
 -- 		config = function()
@@ -421,9 +403,12 @@ return {
 -- }
 
 -- return {
--- 	"arzg/vim-colors-xcode",
+-- 	"HoNamDuong/hybrid.nvim",
+-- 	lazy = false,
+-- 	priority = 1000,
+-- 	opts = {},
 -- 	config = function()
--- 		vim.cmd("colorscheme xcodedark")
+-- 		vim.cmd.colorscheme("hybrid")
 -- 	end,
 -- }
 
@@ -436,29 +421,28 @@ return {
 -- 		-- vim.api.nvim_set_hl(0, "@function", { fg = "#0091cd", italic = false })
 -- 		-- vim.api.nvim_set_hl(0, "@keyword", { fg = "#ee70a6", italic = false })
 -- 		-- vim.api.nvim_set_hl(0, "@string", { fg = "#5ecc62", italic = false })
--- 		-- vim.api.nvim_set_hl(0, "@punctuation.bracket", { fg = "#ee70a6" })
+-- 		-- vim.api.nvim_set_hl(0, "@punctuation.bracket", { fg = "#ff6c6b" })
 --
 -- 		-- Additional highlight settings
 -- 		vim.g.gruvbox_italic_variables = true
 -- 		vim.g.gruvbox_flat_style = "dark"
 --
 -- 		vim.cmd.colorscheme("gruvbox-flat")
--- 		vim.api.nvim_set_hl(0, "@number", { fg = "#5cc3e8", italic = false })
+--
+-- 		-- Custom Highlighting
+-- 		vim.api.nvim_set_hl(0, "@number", { fg = "#b0a696", italic = true })
+-- 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "#ff6c6b", undercurl = true })
+-- 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "#ECBE7B", undercurl = true })
+-- 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "#b1d4e5", undercurl = true })
+-- 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "#98be65", undercurl = true })
+--
+-- 		-- Additional Diagnostic Highlights
 -- 		vim.cmd([[
---   highlight DiagnosticError guifg=#ff6c6b guibg=#3c2c2c
---   highlight DiagnosticWarn guifg=#ECBE7B guibg=#3f3722
---   highlight DiagnosticInfo guifg=#b1d4e5 guibg=#2a3b4c
---   highlight DiagnosticHint guifg=#98be65 guibg=#2c3c2c
--- ]])
--- 	end,
--- }
-
--- return {
--- 	"rmehri01/onenord.nvim",
--- 	priority = 1000,
--- 	lazy = false,
--- 	config = function()
--- 		vim.cmd.colorscheme("onenord")
+-- 			highlight DiagnosticError guifg=#ff6c6b guibg=#3c2c2c
+-- 			highlight DiagnosticWarn guifg=#ECBE7B guibg=#3f3722
+-- 			highlight DiagnosticInfo guifg=#b1d4e5 guibg=#2a3b4c
+-- 			highlight DiagnosticHint guifg=#98be65 guibg=#2c3c2c
+-- 		]])
 -- 	end,
 -- }
 
@@ -484,5 +468,12 @@ return {
 -- 	"shaunsingh/nord.nvim",
 -- 	config = function()
 -- 		vim.cmd.colorscheme("nord")
+-- 	end,
+-- }
+
+-- return {
+-- 	"morhetz/gruvbox",
+-- 	config = function()
+-- 		vim.cmd.colorscheme("gruvbox")
 -- 	end,
 -- }

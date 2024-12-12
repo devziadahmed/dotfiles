@@ -35,5 +35,8 @@ require("lazy").setup({
 	require("plugins.alpha"),
 	require("plugins.indent-blankline"),
 	require("plugins.misc"),
+	require("plugins.toggleterm"),
+	-- require("plugins.trouble"),
+	-- require("plugins.betterdvt"),
 	-- require("plugins.cmp"),
 })

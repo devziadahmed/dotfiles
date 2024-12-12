@@ -1,5 +1,8 @@
 vim.api.nvim_set_keymap("n", "t", ":Neotree toggle<CR>", { noremap = true, silent = true })
 
+-- Diagnostics: Show more on hover
+vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+
 -- For init.lua
 vim.g.mapleader = " "
 

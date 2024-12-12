@@ -19,8 +19,6 @@ return {
 				"eslint_d", -- ts/js linter
 				"clang-format", -- C/C++ formatter
 				"cppcheck", -- C/C++ linter
-				-- 'shfmt', -- shell formatter
-				-- 'ruff', -- python linter and formater
 			},
 			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
@@ -34,6 +32,11 @@ return {
 			formatting.stylua,
 			formatting.clang_format.with({
 				filetypes = { "c", "cpp", "cs", "h", "hpp" },
+				extra_args = { "--style=Google" },
+				-- extra_args = {
+				-- 	"-style=Google",
+				-- 	"-i",
+				-- },
 			}),
 			diagnostics.cppcheck.with({
 				extra_args = { "--enable=warning,style,performance,portability" },
