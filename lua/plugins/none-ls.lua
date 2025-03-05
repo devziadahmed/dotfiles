@@ -15,10 +15,11 @@ return {
 			ensure_installed = {
 				"checkmake", -- linter for Makefiles
 				"prettier", -- ts/js formatter
-				"stylua", -- lua formatter
+				"stylua",   -- lua formatter
 				"eslint_d", -- ts/js linter
 				"clang-format", -- C/C++ formatter
 				"cppcheck", -- C/C++ linter
+				"asmfmt",   -- Assembly formatter
 			},
 			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
@@ -40,6 +41,9 @@ return {
 			}),
 			diagnostics.cppcheck.with({
 				extra_args = { "--enable=warning,style,performance,portability" },
+			}),
+			formatting.asmfmt.with({
+				filetypes = { "asm", "s" }, -- Specify assembly file types
 			}),
 			-- formatting.shfmt.with { args = { '-i', '4' } },
 			-- require('none-ls.formatting.ruff').with { extra_args = { '--extend-select', 'I' } },

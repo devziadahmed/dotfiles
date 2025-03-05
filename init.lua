@@ -36,6 +36,8 @@ require("lazy").setup({
 	require("plugins.indent-blankline"),
 	require("plugins.misc"),
 	require("plugins.toggleterm"),
+	require("plugins.copilot"),
+	require("plugins.chatGPT"),
 	-- require("plugins.trouble"),
 	-- require("plugins.betterdvt"),
 	-- require("plugins.cmp"),

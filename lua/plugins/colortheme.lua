@@ -192,8 +192,17 @@ return {
 				-- vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { fg = "#c0c0c0", bg = "none" }) -- Indent markers
 				-- vim.api.nvim_set_hl(0, "NeoTreeRootName", { fg = "#d08770", bg = "none", bold = true }) -- Root folder
 				vim.api.nvim_set_hl(0, "NeoTreeCursorLine", { bg = "#e0e0e0", fg = "#d08770" }) -- Hover line color
+
+				-- Set cursor colors for insert mode
+				vim.api.nvim_set_hl(0, "CursorInsert", { fg = "NONE", bg = "#657080" }) -- Insert mode cursor color
+				vim.api.nvim_set_hl(0, "Cursor", { fg = "NONE", bg = "#FAB387" }) -- Normal mode cursor color
+
+				vim.opt.guicursor = {
+					"n-v-c:block-Cursor/lCursor",
+					"i:ver100-CursorInsert",
+				}
 			end
-		end, 100)
+		end, 500)
 
 		-- 		-- Optional: Keymap to toggle flavors manually
 		vim.api.nvim_set_keymap(
@@ -374,7 +383,7 @@ return {
 -- 			},
 -- 			highlights = {
 -- 				-- ["@variable.member"] = "$clr",
--- 				-- ["@string"] = { fg = "$bright_orange", bg = "#00ff00", fmt = "bold" },
+-- 				-- ["@string"] = { fg = "$bright_orange", bg = "#5ecc", fmt = "bold" },
 -- 				-- ["@function"] = { fg = "#0000ff", sp = "$cyan", fmt = "underline,italic" },
 -- 				-- ["@function.builtin"] = { fg = "#0059ff" },
 -- 				-- ["@punctuation.bracket"] = { fg = "$clr" },

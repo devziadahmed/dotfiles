@@ -1,3 +1,9 @@
+-- Map Alt + Arrow keys to normal mode
+vim.api.nvim_set_keymap("i", "<A-Left>", "<Esc>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<A-Right>", "<Esc>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<A-Up>", "<Esc>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<A-Down>", "<Esc>", { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap("n", "t", ":Neotree toggle<CR>", { noremap = true, silent = true })
 
 -- Diagnostics: Show more on hover
